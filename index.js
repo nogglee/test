@@ -136,7 +136,30 @@ async function createCalendarEvent(args) {
 // Tool handlers
 server.setRequestHandler(ListToolsRequestSchema, async () => {
     debugLog('List tools request received');
-    return { tools: [CREATE_EVENT_TOOL] };
+    return {
+    tools: [
+      {
+        name: "hello_tool",
+        description: "Returns a hello world message",
+        input_schema: {
+          type: "object",
+          properties: {
+            name: {
+              type: "string",
+              description: "Your name"
+            }
+          },
+          required: ["name"]
+        }
+      }
+    ]
+  };
+    // return { tools: [CREATE_EVENT_TOOL] };
+});
+
+const transport = new StdioServerTransport();
+server.connect(transport).then(() => {
+  console.log("🚀 MCP Server running");
 });
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
