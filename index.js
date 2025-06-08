@@ -57,6 +57,7 @@ debugLog('Server initialized');
 // Check for required environment variables
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 if (!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
     console.error("Error: GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET environment variables are required");
@@ -72,14 +73,14 @@ async function createCalendarEvent(args) {
         const oauth2Client = new google.auth.OAuth2(
             GOOGLE_CLIENT_ID,
             GOOGLE_CLIENT_SECRET,
-            'http://localhost'
+            REDIRECT_URI
         );
         debugLog('OAuth2 client created');
         
         debugLog('Setting credentials');
         // Users will need to replace this with their own refresh token
         oauth2Client.setCredentials({
-            refresh_token: "YOUR_REFRESH_TOKEN_HERE",
+            refresh_token: "1//0eYtsJB71Ejl1CgYIARAAGA4SNwF-L9IrsivkX6wBOH4pTyHexOFUz6f42zHMAInSBp86CZ6DbKHvT-paaQRyzl_Jddr259T2Rao",
             token_uri: "https://oauth2.googleapis.com/token"
         });
         debugLog('Credentials set');
