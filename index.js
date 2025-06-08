@@ -11,6 +11,10 @@ function debugLog(...args) {
     console.error('DEBUG:', new Date().toISOString(), ...args);
 }
 
+console.log("DEBUG | GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("DEBUG | GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
+console.log("DEBUG | REDIRECT_URI:", process.env.REDIRECT_URI);
+
 // Define the create_event tool
 const CREATE_EVENT_TOOL = {
     name: "create_event",
